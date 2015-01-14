@@ -90,7 +90,7 @@ public class Combo
 		this.maxComboSize = maxComboSize;
 		this.timeLimit = timeLimit;
 		if (player instanceof EntityPlayerMP) {
-			PacketDispatcher.sendTo(new UpdateComboPacket(this), (EntityPlayerMP) player);
+			PacketDispatcher.sendToAll(new UpdateComboPacket(this));
 		}
 	}
 
@@ -163,7 +163,7 @@ public class Combo
 			damageList.add(damage);
 			comboDamage += damage;
 			if (player instanceof EntityPlayerMP) {
-				PacketDispatcher.sendTo(new UpdateComboPacket(this), (EntityPlayerMP) player);
+				PacketDispatcher.sendToAll(new UpdateComboPacket(this));
 			}
 			if (getSize() == maxComboSize) {
 				endCombo(player);
@@ -185,7 +185,7 @@ public class Combo
 				comboTimer = timeLimit;
 			}
 			if (player instanceof EntityPlayerMP) {
-				PacketDispatcher.sendTo(new UpdateComboPacket(this), (EntityPlayerMP) player);
+				PacketDispatcher.sendToAll(new UpdateComboPacket(this));
 			}
 		}
 	}
@@ -199,7 +199,7 @@ public class Combo
 			lastEntityHit = null;
 			consecutiveHits = 0;
 			if (player instanceof EntityPlayerMP) {
-				PacketDispatcher.sendTo(new UpdateComboPacket(this), (EntityPlayerMP) player);
+				PacketDispatcher.sendToAll(new UpdateComboPacket(this));
 			}
 		}
 	}
